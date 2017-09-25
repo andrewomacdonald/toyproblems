@@ -18,3 +18,12 @@ function longestVowelSequence(s) {
         return histogram;
     },[]));
 }
+
+
+//fancier version
+
+function longestVowelSequence(string) {
+    return Math.max(...string.match(/[aeiou]+/g).map(function(value){
+        return value.length;
+    }));
+}
