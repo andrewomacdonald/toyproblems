@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<body>
+<table class="myTable">
+<tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    <td>
+        <button class='myButton'>DELETE</delete>
+    </td>
+</tr>
+<tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+    <td>
+        <button class='myButton'>DELETE</delete>
+    </td>
+</tr>
+<tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+    <td>
+        <button class='myButton'>DELETE</delete>
+    </td>
+</tr>
+<tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+    <td>
+        <button class='myButton'>DELETE</delete>
+    </td>
+</tr>
+<tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+    <td>
+        <button class='myButton'>DELETE</delete>
+    </td>
+</tr>
+<tr>
+    <td>Magazzini Alimentari Riuniti</td>
+<td>Giovanni Rovelli</td>
+<td>Italy</td>
+<td>
+<button class='myButton'>DELETE</delete>
+    </td>
+    </tr>
+    </table>
+    <div>
+        <p>Answer 1: <span class="answer1"></span></p>
+        <p>Answer 2: <span class="answer2"></span></p>
+        <p>Answer 3: <span class="answer3"></span></p>
+    </div>
+<br>
+<br>
+<p>Question 1: Add a column to the table with a delete button that deletes that row.</p>
+<p>Question 2: Write a function that adds the text from each column to the Answer 1 span.</p>
+<p>Question 3: Write a function that logs the length of each row from where you clicked to the Answer 2 span.</p>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+    $(function(){
+        $('.myButton').click(function() {
+            $(this).closest('tr').remove();
+        });
+
+        $('tr').click(function() {
+            var valueToAppend = '';
+            $(this).find('td:not(:has(>button))').each(function(index,value) {
+                valueToAppend += $(value).text() + ' ';
+            });
+            $('.answer1').text(valueToAppend);
+        });
+
+        $('td').click(function() {
+            $('.answer2').text($(this).prevAll().length + 1);
+            $('.answer3').text($(this).text() + ' sucks');
+        });
+    })
+    </script>
+    </body>
+</html>
