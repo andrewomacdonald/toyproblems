@@ -41,11 +41,11 @@ var findRestaurant = function(list1, list2) {
     }, solutionObject);
 
     return solution.result;
-}
+};
 
 var createMap = function(list) {
     return list.reduce(function(map,value,index) {
         map[value] = index;
         return map
     },{})
-}
+};
